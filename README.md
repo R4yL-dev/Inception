@@ -55,8 +55,8 @@ You can configure these values as you wish, but they must all be present in the 
 
 Once the initial configuration is done, simply run `make`. This will invoke `docker compose` to create all the containers and run them.
 
-- `make up` - Crée et lance tous les conteneurs
-- `make down` - stop and delete containers
-- `make start` - starts containers
-- `make stop` - stop containers
-- `make clean` stops containers and removes all traces.
+- `make up` : Creates and starts all containers
+- `make down` : Stop and delete containers
+- `make start` : Starts containers
+- `make stop` : Stop containers
+- `make clean` : Stops containers and removes all traces
