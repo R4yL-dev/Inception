@@ -3,6 +3,7 @@ PATH_COMPOSE	=	./srcs/compose.yaml
 PATH_VOL		=	/home/luca/data
 PATH_DB			=	$(PATH_VOL)/mariadb
 PATH_WP			=	$(PATH_VOL)/wordpress
+PATH_AM			=	$(PATH_VOL)/adminer
 
 all : up
 
@@ -20,9 +21,12 @@ stop :
 
 clean : down
 	@docker system prune -af
-	@docker volume rm wordpress-data mariadb-data
+	@docker volume rm wordpress-data mariadb-data adminer-data
+
+re : clean all
 
 makedir :
 	@mkdir -p $(PATH_VOL)
 	@mkdir -p $(PATH_DB)
 	@mkdir -p $(PATH_WP)
+	@mkdir -p $(PATH_AM)
