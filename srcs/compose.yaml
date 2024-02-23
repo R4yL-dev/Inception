@@ -42,6 +42,18 @@ services:
     networks:
       - inception
     restart: on-failure
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer
+    volumes:
+      - adminer-data:/var/www
+    ports:
+      - 8080:8080
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    restart: on-failure
 
 volumes:
   wordpress-data:
@@ -56,6 +68,13 @@ volumes:
     driver: local
     driver_opts:
       device: /home/luca/data/mariadb
+      type: none
+      o: bind
+  adminer-data:
+    name: adminer-data
+    driver: local
+    driver_opts:
+      device: /home/luca/data/adminer
       type: none
       o: bind
 
