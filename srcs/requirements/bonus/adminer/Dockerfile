@@ -12,10 +12,8 @@ RUN rm -fr /var/www/localhost && \
 COPY ./conf/adminer.conf /etc/nginx/http.d/adminer.conf
 COPY ./conf/www.conf /etc/php82/php-fpm.d/www.conf
 COPY ./tools/init.sh /usr/local/bin/init.sh
-COPY ./tools/download_adminer.sh /usr/local/bin/download_adminer.sh
 
-RUN chmod +x /usr/local/bin/init.sh && \
-	chmod +x /usr/local/bin/download_adminer.sh
+RUN chmod +x /usr/local/bin/init.sh
 
 WORKDIR /var/www
 
