@@ -5,6 +5,8 @@ PATH_DB			=	$(PATH_VOL)/mariadb
 PATH_WP			=	$(PATH_VOL)/wordpress
 PATH_AM			=	$(PATH_VOL)/adminer
 PATH_OS			=	$(PATH_VOL)/openssl
+PATH_ST			=	$(PATH_VOL)/static
+
 
 all : up
 
@@ -22,7 +24,7 @@ stop :
 
 clean : down
 	@docker system prune -af
-	@docker volume rm wordpress-data mariadb-data adminer-data openssl-data
+	@docker volume rm wordpress-data mariadb-data adminer-data openssl-data static-data
 
 re : clean all
 
@@ -32,3 +34,4 @@ makedir :
 	@mkdir -p $(PATH_WP)
 	@mkdir -p $(PATH_AM)
 	@mkdir -p $(PATH_OS)
+	@mkdir -p $(PATH_ST)

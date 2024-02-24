@@ -89,6 +89,16 @@ services:
     env_file:
       - .env_cert
     restart: on-failure
+  static:
+    container_name: static
+    build: ./requirements/bonus/static
+    volumes:
+      - static-data:/var/www
+    ports:
+      - 80:80
+    networks:
+      - inception
+    restart: on-failure
 
 volumes:
   wordpress-data:
@@ -117,6 +127,13 @@ volumes:
     driver: local
     driver_opts:
       device: /home/luca/data/openssl
+      type: none
+      o: bind
+  static-data:
+    name: static-data
+    driver: local
+    driver_opts:
+      device: /home/luca/data/static
       type: none
       o: bind
 
