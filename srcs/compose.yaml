@@ -54,6 +54,22 @@ services:
     depends_on:
       - mariadb
     restart: on-failure
+  vsftpd:
+    container_name: vsftpd
+    build: ./requirements/bonus/vsftpd
+    volumes:
+      - wordpress-data:/var/wordpress
+    ports:
+      - 20:20
+      - 21:21
+      - 21000-21100:21000-21100
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    env_file:
+      - .env_ftp
+    restart: on-failure
 
 volumes:
   wordpress-data:
