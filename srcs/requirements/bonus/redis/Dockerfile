@@ -7,3 +7,4 @@ RUN apk update && \
 COPY ./conf/redis.conf /etc/redis.conf
 
 CMD [ "redis-server", "/etc/redis.conf" ]
+#CMD [ "sleep", "infinity" ]

@@ -5,12 +5,14 @@ services:
     build: ./requirements/nginx
     volumes:
       - wordpress-data:/var/www
+      - openssl-data:/var/ssl
     ports:
       - 443:443
     networks:
       - inception
     depends_on:
       - wordpress
+      - openssl
     restart: on-failure
   wordpress:
     container_name: wordpress
@@ -39,36 +41,53 @@ services:
   redis:
     container_name: redis
     build: ./requirements/bonus/redis
+    volumes:
+      - openssl-data:/var/ssl
     networks:
       - inception
+    depends_on:
+      - openssl
     restart: on-failure
   adminer:
     container_name: adminer
     build: ./requirements/bonus/adminer
     volumes:
       - adminer-data:/var/www
+      - openssl-data:/var/ssl
     ports:
       - 8080:8080
     networks:
       - inception
     depends_on:
       - mariadb
+      - openssl
     restart: on-failure
   vsftpd:
     container_name: vsftpd
     build: ./requirements/bonus/vsftpd
     volumes:
       - wordpress-data:/var/wordpress
+      - openssl-data:/var/ssl
     ports:
-      - 20:20
       - 21:21
       - 21000-21100:21000-21100
     networks:
       - inception
     depends_on:
       - wordpress
+      - openssl
     env_file:
       - .env_ftp
+    restart: on-failure
+  openssl:
+    container_name: openssl
+    build: ./requirements/bonus/openssl
+    volumes:
+      - openssl-data:/var/ssl
+    networks:
+      - inception
+    env_file:
+      - .env_cert
     restart: on-failure
 
 volumes:
@@ -91,6 +110,13 @@ volumes:
     driver: local
     driver_opts:
       device: /home/luca/data/adminer
+      type: none
+      o: bind
+  openssl-data:
+    name: openssl-data
+    driver: local
+    driver_opts:
+      device: /home/luca/data/openssl
       type: none
       o: bind
 

@@ -4,6 +4,7 @@ PATH_VOL		=	/home/luca/data
 PATH_DB			=	$(PATH_VOL)/mariadb
 PATH_WP			=	$(PATH_VOL)/wordpress
 PATH_AM			=	$(PATH_VOL)/adminer
+PATH_OS			=	$(PATH_VOL)/openssl
 
 all : up
 
@@ -21,7 +22,7 @@ stop :
 
 clean : down
 	@docker system prune -af
-	@docker volume rm wordpress-data mariadb-data adminer-data
+	@docker volume rm wordpress-data mariadb-data adminer-data openssl-data
 
 re : clean all
 
@@ -30,3 +31,4 @@ makedir :
 	@mkdir -p $(PATH_DB)
 	@mkdir -p $(PATH_WP)
 	@mkdir -p $(PATH_AM)
+	@mkdir -p $(PATH_OS)
