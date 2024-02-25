@@ -1,4 +1,4 @@
-FROM alpine:3.19.1
+FROM alpine:3.18
 
 RUN apk update && \
 	apk add redis --no-cache && \
@@ -7,4 +7,3 @@ RUN apk update && \
 COPY ./conf/redis.conf /etc/redis.conf
 
 CMD [ "redis-server", "/etc/redis.conf" ]
-#CMD [ "sleep", "infinity" ]

@@ -37,4 +37,4 @@ wp plugin install redis-cache --activate
 
 wp redis enable
 
-php-fpm82 -F
+php-fpm81 -F

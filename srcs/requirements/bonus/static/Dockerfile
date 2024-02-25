@@ -1,7 +1,7 @@
-FROM alpine:3.19.1
+FROM alpine:3.18
 
 RUN apk update && \
-	apk add openssl nginx git --no-cache && \
+	apk add nginx git --no-cache && \
 	rm -rf /var/cache/apk/*
 
 RUN rm /etc/nginx/http.d/default.conf
@@ -14,6 +14,6 @@ RUN rm -fr inception-static/.git
 RUN cp -fr inception-static/* ./
 RUN rm -fr inception-static
 
-EXPOSE 80
+EXPOSE 4242
 
 CMD ["nginx", "-g", "daemon off;"]

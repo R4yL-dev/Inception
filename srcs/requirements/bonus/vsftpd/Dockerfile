@@ -1,7 +1,7 @@
-FROM alpine:3.19.1
+FROM alpine:3.18
 
 RUN apk update && \
-	apk add vsftpd openssl --no-cache && \
+	apk add vsftpd --no-cache && \
 	rm -rf /var/cache/apk/*
 
 COPY ./conf/vsftpd.conf /etc/vsftpd

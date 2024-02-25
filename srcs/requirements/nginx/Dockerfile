@@ -1,7 +1,7 @@
-FROM alpine:3.19.1
+FROM alpine:3.18
 
 RUN apk update && \
-	apk add openssl nginx --no-cache && \
+	apk add nginx --no-cache && \
 	rm -rf /var/cache/apk/*
 
 RUN rm /etc/nginx/http.d/default.conf

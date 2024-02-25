@@ -95,7 +95,7 @@ services:
     volumes:
       - static-data:/var/www
     ports:
-      - 80:80
+      - 4242:4242
     networks:
       - inception
     restart: on-failure

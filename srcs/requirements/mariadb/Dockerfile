@@ -1,4 +1,4 @@
-FROM alpine:3.19.1
+FROM alpine:3.18
 
 RUN apk update && \
 	apk add mysql mysql-client --no-cache && \
