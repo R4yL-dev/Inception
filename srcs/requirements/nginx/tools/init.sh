@@ -11,4 +11,4 @@ if [ ! -f /var/ssl/main.key ] || [ ! -f /var/ssl/main.crt ]; then
 	-subj $CERT_SUBJECT
 fi
 
-sleep infinity
+exec nginx -g 'daemon off;'

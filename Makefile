@@ -1,6 +1,6 @@
 PATH_COMPOSE	=	./srcs/compose.yaml
 
-PATH_VOL		=	/home/luca/data
+PATH_VOL		=	/home/lray/data
 PATH_DB			=	$(PATH_VOL)/mariadb
 PATH_WP			=	$(PATH_VOL)/wordpress
 PATH_AM			=	$(PATH_VOL)/adminer
